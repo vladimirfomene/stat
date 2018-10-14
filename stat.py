@@ -3,19 +3,18 @@ import requests
 import constant
 import sys
 
-GITHUB_API_URL = "https://api.github.com"
 
 def get_repo_path(args):
     clone_url = args[1]
     parsed_url = urlparse(clone_url)
     path = str(parsed_url.path)
     path = path[:-4]
-    
+
     return path
 
 
 def build_query_url(path):
-    return GITHUB_API_URL + "/repos" + path
+    return constant.GITHUB_API_URL + "/repos" + path
 
 def make_api_call(url):
     req = requests.get(url)
